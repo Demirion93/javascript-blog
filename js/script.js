@@ -18,7 +18,7 @@
   
     /* add class 'active' to the clicked link */
 
-    const activeArticles = document.querySelectorAll('.posts post.active');
+    const activeArticles = document.querySelectorAll('.posts article.active');
 
     for(let aactiveArticle of activeArticles){
     activeArticle.classList.remove('active');
