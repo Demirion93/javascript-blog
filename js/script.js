@@ -66,31 +66,40 @@ function clearMessages(titleList){
     /* remove contents of titleList */
     
     clearMessages(titleList);
-    
-    /* for each article */
 
+    /* find all the articles and save them to variable: articles */
+      /* ... */
+
+    let html = '';
+    
     const articles = document.querySelectorAll('.post');
     for(let article of articles){
       console.log(article);
     }
 
-  //   /* get the article id */
+    /* get the article id */
 
-  //   const articleId = articles.getAttribute('id');
+    const articleId = article.getAttribute('id');
 
-  //   /* find the title element */
+    /* find the title element */
 
-  //   const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
-  //   /* get the title from the title element */
+    /* get the title from the title element */
 
-  //   /* create HTML of the link */
+    const getTitle = articleTitle.getAttribute('.post-title')
 
-  //   const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>'; {
-  //     console.log(linkHTML);
-  //   }
+    /* create HTML of the link */
 
-    /* insert link into titleList */
+    const linkHTML = '<li><a href="#" + articleId + "><span>' + articleTitle + '</span></a></li>'; {
+      console.log(linkHTML);
+    }
+
+    /* insert link into html variable */
+    html = html + linkHTML;
+
+    titleList.innerHTML = html;
+    
 
   }
 
