@@ -9,7 +9,7 @@ function clearMessages(titleList){
     const links = document.querySelectorAll('.titles a');
     console.log('links:', links);
   });*/
-
+{
   const titleClickHandler = function(event){
     event.preventDefault();
     const clickedElement = this;
@@ -26,10 +26,9 @@ function clearMessages(titleList){
   
     /* [IN PROGRESS] add class 'active' to the clicked link */
 
-    const activeArticles = document.querySelectorAll('.posts article.active');{
+    const activeArticles = document.querySelectorAll('.posts article.active');
 
-    for(let activeArticle of activeArticles){
-    clickedElement.classList.add('active');
+    clickedElement.classList.add('active');{
     console.log('clickedElement:', clickedElement);
     }
   
@@ -39,7 +38,7 @@ function clearMessages(titleList){
     activeArticle.classList.remove('active');
     console.log('clickedElement:', clickedElement);
     }
-  }
+  
   
     /* get 'href' attribute from the clicked link */
 
@@ -49,17 +48,17 @@ function clearMessages(titleList){
   
     /* find the correct article using the selector (value of 'href' attribute) */
 
-    const targetArticle = document.querySelector(articleSelector);{
+    const targetArticle = document.querySelector(articleSelector);
     console.log(targetArticle);
     
     /* add class 'active' to the correct article */
 
     targetArticle.classList.add('active');
-    }
+    
     const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';
-
+  
   function generateTitleLinks(){
 
   const titleList = document.querySelector(optTitleListSelector);
@@ -111,3 +110,4 @@ function clearMessages(titleList){
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+}
