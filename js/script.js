@@ -62,7 +62,7 @@ function clearMessages(titleList){
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = 'post-author';
+    optArticleAuthorSelector = '.post-author';
   
   function generateTitleLinks(customSelector = ''){
 
@@ -300,7 +300,6 @@ function clearMessages(titleList){
   
       html = html + linkHTML;
       console.log(linkHTML);
-  
   
       /* insert HTML of all the links into the tags wrapper */
   
