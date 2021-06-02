@@ -122,4 +122,29 @@ body {
     margin: 0 10px 0 0;
   }
 }
+/* Tag cloud */
+.tags li {
+  display: inline-block;
+  margin: 0 4px 0 4px;
+}
+
+.tag-size-1 {
+  font-size: 20px;
+}
+
+.tag-size-2 {
+  font-size: 25px;
+}
+
+.tag-size-3 {
+  font-size: 30px;
+}
+
+.tag-size-4 {
+  font-size: 35px;
+}
+
+.tag-size-5 {
+  font-size: 40px;
+}
 
