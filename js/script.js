@@ -66,7 +66,9 @@ function clearMessages(titleList){
     optTagsListSelector = '.tags.list',
     optCloudClassCount = 5,
     optCloudClassPrefix = 'tag-size-',
-    optAuthorsListSelector = '.authors.list';
+    optAuthorsListSelector = '.authors.list',
+    optAuthorClassCount = 5,
+    optAuthorClassPrefix = 'author-size-';
   
   function generateTitleLinks(customSelector = ''){
 
@@ -344,7 +346,38 @@ function clearMessages(titleList){
 
   addClickListenersToTags();
 
+  function calculateAuthorsParams(authors){
+    const params = {
+      min:999999,
+      max: 0
+    };
+    console.log(params);
+
+    for(let author in authors){
+      console.log(author + ' is used ' + authors[author] + ' times');
+      if(authors[authors] > params.max){
+        params.max = authors[author];
+      }
+      if(authors[authors] < params.min){
+        params.min = authors[author];
+      }
+    }
+    console.log(authors);
+    return params;
+  }
+
+  function calculateAuthorsClass(count, params){
+    const normalizedCount = count - params.min;
+    const normalizedMax = params.max - params.min;
+    const percentage = normalizedCount / normalizedMax;
+    const classNumber = Math.floor( percentage * (optAuthorClassCount - 1) + 1 );
+    return optAuthorClassPrefix+classNumber;
+  }
+
   function generateAuthors(){
+    /* [NEW] create a new variable allTags with an empty object */
+    let allAuthors = {};
+    
     /* find all articles */
   
     const articles = document.querySelectorAll(optArticleSelector);
@@ -378,6 +411,17 @@ function clearMessages(titleList){
   
       html = html + linkHTML;
       console.log(linkHTML);
+
+      /* [NEW] check if this link is NOT already in allAuthors */
+      authorsWrapper.innerHTML = html;
+      if(!allAuthors[articleAuthors]) {
+      
+        /* [NEW] add articleAuthor to allAuthors object */
+        
+        allAuthors[articleAuthors] = 1;
+      } else {
+        allAuthors[articleAuthors]++;
+      }
   
       /* insert HTML of all the links into the tags wrapper */
   
@@ -386,6 +430,30 @@ function clearMessages(titleList){
   
     /* END LOOP: for every article: */
     }
+
+    const authorList = document.querySelector('.authors.list');
+    const authorsParams = calculateAuthorsParams(allAuthors);
+    console.log('authorsParams:', authorsParams);
+
+    /* [NEW] create variable for all links HTML code */
+    let allAuthorsHTML = '';
+
+    /* [NEW] START LOOP: for each author in allAuthors: */
+    
+    for(let articleAuthor in allAuthors){
+    
+      /* [NEW] generate code of a link and add it to allAuthorsHTML */
+
+      const authorLinkHTML = calculateAuthorsClass(allAuthors[articleAuthor], authorsParams);
+      console.log('authorLinkHTML:', authorLinkHTML);
+      allAuthorsHTML += '<li><a href="#author-' + articleAuthor + '" class ="' + authorLinkHTML + '">' + articleAuthor + '</a>(' + allAuthors[articleAuthor] + ')</li>';  
+      console.log(allAuthorsHTML);
+    
+    /* [NEW] END LOOP: for each tag in allTags: */
+    }
+    /*[NEW] add HTML from allTagsHTML to tagList */
+    
+    authorList.innerHTML = allAuthorsHTML;
   }
   generateAuthors();
 
