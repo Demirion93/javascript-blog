@@ -71,10 +71,10 @@ function clearMessages(titleList){
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.tags.list',
+    // optTagsListSelector = '.tags.list',
     optCloudClassCount = 5,
     optCloudClassPrefix = 'tag-size-',
-    optAuthorsListSelector = '.authors.list',
+    // optAuthorsListSelector = '.authors.list',
     optAuthorClassCount = 5,
     optAuthorClassPrefix = 'author-size-';
   
@@ -397,6 +397,7 @@ function clearMessages(titleList){
     const classNumber = Math.floor( percentage * (optAuthorClassCount - 1) + 1 );
     return optAuthorClassPrefix+classNumber;
   }
+  console.log(calculateAuthorsClass);
 
   function generateAuthors(){
     /* [NEW] create a new variable allTags with an empty object */
